@@ -17,8 +17,8 @@ The corpus contains the entire dataset, which is pre-processed, following the sh
 3. Each token is lemmatized (using WordNetLemmatizer) and stemmed (using the english SnowballStemmer). These 2 operations are crucial in order to uniformize the tokens gathered for each document, and, in particular, to attain general terms to provide better query matches.
 
 Once the tokens have been properly processed, the model (a TF-IDF matrix, provided by Scikit-Learn's TfidfVectorizer) is fitted. Do note that this implementation also allows to further reduce the number of tokens, in order to beneffit the produced metrics:
-1. Tokens that appear in less than 8% of the corpus are removed
-2. Tokens that appear in more than 50% of the corpus are removed
+* Tokens that appear in less than 8% of the corpus are removed
+* Tokens that appear in more than 50% of the corpus are removed
 
 Through this step, we are able to reduce ambiguity, due to the least frequent tokens contributing less to the model, and the most frequent diluting the document-specific terms. Additionally, this step greatly reduces the produced models size.
 
@@ -41,3 +41,15 @@ for document in tfidf:
 [Scikit-Learn](https://scikit-learn.org/stable/) - Used for the TF-IDF model.
 
 ## Tests
+
+The presented approach was also targeted for a few unit tests.
+Inside the code folder, file test.py contains the ran tests.
+The tested methods include:
+* Preprocessing step
+    * Evaluate whether an input string is returned as an array of tokens which have been lemmatized and stemmed.
+* Documenting ranking step
+    * Check if the output ranking table has all positive values;
+    * If the given query never appears in the corpus, the score is 0.
+* Search query step
+    * Given a known query, the method outputs a positive number of total matches and positive score for the top 20 matched documents;
+    * If the given query is not known within the corpus, the total number of matches should be 0.

@@ -66,3 +66,5 @@ code/tfidf\.joblib
 code-EXPERIMENTAL/content_tokens\.csv
 
 code-EXPERIMENTAL/tfidf\.p
+
+README\.pdf

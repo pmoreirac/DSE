@@ -2,7 +2,7 @@
 > Simple search engine architecture applied on the [All the news dataset](https://www.kaggle.com/snapcrack/all-the-news/version/4#articles1.csv).
 
 This search engine was developed in the context of the challenge presented in Talkdesk during the application for an NLP Data Scientist.
-The opted apporach aggregates a simple Document Ranking pipeline which resorts to tf-idf distributions of the dataset in order to match queries with the words present in the dataset.
+The opted approach aggregates a simple Document Ranking pipeline which resorts to tf-idf distributions of the dataset in order to match queries with the words present in the dataset.
 The Architecture sections presents the adopted approach in detail, whereas the external libraries used in the arch components are shown next. The adopted model is also briefly detailed, and, finally, a small description of the built tests is provided.
 
 ## Architecture
@@ -53,3 +53,17 @@ The tested methods include:
 * Search query step
     * Given a known query, the method outputs a positive number of total matches and positive score for the top 20 matched documents;
     * If the given query is not known within the corpus, the total number of matches should be 0.
+
+## Improvements
+
+The followed approach is prone to some modifications that may enhance it. The following list aggregates some suggestions to take into account for future work.
+
+* Pre-Preprocessing
+    * Account for more sensible punctuation removal.
+        * Some end sentence words had punctuation attached to them. This is problematic because there may be frequent tokens which differ only by a single irrelevant character.
+    * Study the effects of Lemmatization and Stemming
+        * The literature suggests that these two steps are not always performed in tandem, let alone in the suggested order.
+        * Apart from that, it is unclear how the choice for the lemmatizer and stemmer influence the results. Some public examples show that the Porter stemmer may produce better results, in comparison to the SnowballStemmer.
+    * Study other models than the TF-IDF
+    * Consider other matching scores
+        * The literature mentions Co-sine similarity which was not tested in the time frame of the challenge.

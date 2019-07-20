@@ -20,7 +20,7 @@ Once the tokens have been properly processed, the model (a TF-IDF matrix, provid
 * Tokens that appear in less than 8% of the corpus are removed
 * Tokens that appear in more than 50% of the corpus are removed
 
-Through this step, we are able to reduce ambiguity, due to the least frequent tokens contributing less to the model, and the most frequent diluting the document-specific terms. Additionally, this step greatly reduces the produced models size.
+Through this step, we are able to reduce ambiguity, due to the least frequent tokens contributing less to the model, and the most frequent diluting the document-specific terms. Additionally, this step greatly reduces the produced model's size.
 
 Once the model has been fitted, a user provided query can serve as input. The query is pre-processed and matched with all of the documents present in the model.
 
